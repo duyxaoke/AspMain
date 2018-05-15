@@ -1,0 +1,45 @@
+﻿@model Shared.Models.EditUserViewModel
+@using Shared.Models
+
+<form action="@Url.Action("EditUser","User")" method="post" role="form">
+    @Html.Partial("_ModalHeader", new ModalHeader { Heading = "Edit User" })
+    <div class="modal-body form-horizontal">
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "col-lg-3 col-sm-3 control-label" })
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-lg-3 col-sm-3 control-label" })
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ApplicationRoleId, new { @class = "col-lg-3 col-sm-3 control-label" })
+                <div class="col-lg-6">
+                    @Html.DropDownListFor(m => m.ApplicationRoleId, Model.ApplicationRoles, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_ModalFooter", new ModalFooter { })
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

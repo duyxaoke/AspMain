@@ -1,0 +1,31 @@
+﻿@model Shared.Models.MenuViewModel
+@using Shared.Models
+
+<form action="@Url.Action("AddMenu","Menu")" method="post" role="form">
+    @Html.Partial("_ModalHeader", new ModalHeader { Heading = "Add Menu" })
+    <div class="modal-body form-horizontal">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, new { @class = "col-lg-3 col-sm-3 control-label" })
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Url, new { @class = "col-lg-3 col-sm-3 control-label" })
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.Url, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ParentId, new { @class = "col-lg-3 col-sm-3 control-label" })
+                    <div class="col-lg-6">
+                        @Html.DropDownListFor(m => m.ParentId, Model.ApplicationRoles, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_ModalFooter", new ModalFooter { })
+</form>

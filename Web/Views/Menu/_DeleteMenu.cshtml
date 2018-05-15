@@ -1,0 +1,11 @@
+﻿@model string
+@using Shared.Models
+<form action="@Url.Action("DeleteMenu","Menu")" method="post" role="form">
+    @Html.Partial("_ModalHeader", new ModalHeader { Heading = "Delete Menu" })
+
+    <div class="modal-body form-horizontal">
+        Are you want to delete @Model?
+    </div>
+    @Html.Partial("_ModalFooter", new ModalFooter { SubmitButtonText = "Delete" })
+</form>
+

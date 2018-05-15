@@ -1,0 +1,31 @@
+﻿
+<!-- Main content -->
+<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-yellow">401</h2>
+
+        <div class="error-content">
+            <h3><i class="fa fa-warning text-yellow"></i> Oops! Access Denied.</h3>
+
+            <p>
+                Bạn chưa được cấp quyền (hoặc không có quyền) truy cập vào đường dẫn này.
+            </p>
+            <a href="javascript:void(0)" onClick="backAway()" class="btn btn-default">Quay lại</a>
+        </div>
+        <!-- /.error-content -->
+    </div>
+    <!-- /.error-page -->
+</section>
+
+@section scripts
+{
+    <script>
+        function backAway() {
+            if (history.length === 1) {
+                window.location = "/";
+            } else {
+                history.back();
+            }
+        }
+    </script>
+}

@@ -1,0 +1,23 @@
+﻿@model Shared.Models.ApplicationRoleViewModel
+@using Shared.Models
+
+<form action="@Url.Action("AddEditApplicationRole","ApplicationRole")" method="post" role="form">
+    @Html.Partial("_ModalHeader", new ModalHeader { Heading = $"{(String.IsNullOrEmpty(Model.Id) ? "Add" : "Edit")} Application Role" })
+    <div class="modal-body form-horizontal">
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.RoleName, new { @class = "col-lg-3 col-sm-3 control-label" })
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(m => m.RoleName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, new { @class = "col-lg-3 col-sm-3 control-label" })
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_ModalFooter", new ModalFooter { })
+</form>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Shared.Models.MenuViewModel>
+@using Shared.Models
+
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head">Management Menu</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <a id="createMenuModal" data-toggle="modal" href="@Url.Action("AddEditMenu","Menu", new{ id = 0})" data-target="#modal-action-menu" class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>  Add Menu
+            </a>
+        </div>
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Url</td>
+                    <td>SortOrder</td>
+                    <td>IsActive</td>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.ParentName</td>
+                        <td>@item.Url</td>
+                        <td>@item.SortOrder</td>
+                        <td>@item.IsActive</td>
+                        <td>
+                            <a id="addEditMenuModal" data-toggle="modal" href="@Url.Action("AddEditMenu","Menu", new  {id = item.Id})" data-target="#modal-action-menu"
+                               class="btn btn-info">
+                                <i class="glyphicon glyphicon-pencil"></i>  Edit
+                            </a>
+                            <a id="deleteMenuModal" data-toggle="modal" href="@Url.Action("DeleteMenu","Menu", new  {id = item.Id})" data-target="#modal-action-menu" class="btn btn-danger">
+                                <i class="glyphicon glyphicon-trash"></i>  Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-menu", AreaLabeledId = "modal-action-menu-label", Size = ModalSize.Medium })
+
+@section scripts
+{
+    <script>
+        (function ($) {
+            function InitModalMenu() {
+                var $this = this;
+
+                function initilizeModel() {
+                    $("#modal-action-menu").on('loaded.bs.modal', function (e) {
+
+                    }).on('hidden.bs.modal', function (e) {
+                        $(this).removeData('bs.modal');
+                    });
+                }
+                $this.init = function () {
+                    initilizeModel();
+                }
+            }
+            $(function () {
+                var self = new InitModalMenu();
+                self.init();
+            })
+        }(jQuery))
+
+    </script>
+}
